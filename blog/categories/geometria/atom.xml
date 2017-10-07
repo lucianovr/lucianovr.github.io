@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: geometria | My Octopress Blog]]></title>
+  <title><![CDATA[Category: geometria | Hello World Blog]]></title>
   <link href="http://lucianovr.github.io/blog/categories/geometria/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-07T00:54:46-03:00</updated>
+  <updated>2017-10-07T18:46:19-03:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Luciano Ribeiro]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
-    <title type="html"><![CDATA[Ataque Fulminante]]></title>
+    <title type="html"><![CDATA[Coming Soon]]></title>
     <link href="http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante/"/>
     <updated>2017-10-06T23:34:01-03:00</updated>
     <id>http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante</id>
-    <content type="html"><![CDATA[<p>Aviso, nao aperte a tecla abaixo
-Serio</p>
-
-<!-- more -->
-
-
-<p>Te amo! &lt;3</p>
+    <content type="html"><![CDATA[<p><img class="<a" src="href="https://github.com/lucianovr/lucianovr.github.io/tree/master/images">https://github.com/lucianovr/lucianovr.github.io/tree/master/images</a>"></p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Geometria | My Octopress Blog]]></title>
   <link href="http://lucianovr.github.io/blog/categories/geometria/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-07T00:16:37-03:00</updated>
+  <updated>2017-10-07T00:22:30-03:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -18,21 +18,13 @@
     <link href="http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante/"/>
     <updated>2017-10-06T23:34:01-03:00</updated>
     <id>http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante</id>
-    <content type="html"><![CDATA[<p>URI Ataque Fulminante
-Eh um problema sobre</p>
+    <content type="html"><![CDATA[<p>Aviso, nao aperte a tecla abaixo
+Serio</p>
 
 <!-- more -->
 
 
-<p>aaa
-ddd</p>
-
-<pre><code class="Java">public class HelloWorld {
-  public static void main(String[] args) {
-      System.out.println("Hello World");
-  }
-}
-</code></pre>
+<p>Te amo! &lt;3</p>
 ]]></content>
   </entry>
   

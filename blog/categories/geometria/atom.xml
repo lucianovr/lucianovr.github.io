@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Geometria | My Octopress Blog]]></title>
+  <title><![CDATA[Category: geometria | My Octopress Blog]]></title>
   <link href="http://lucianovr.github.io/blog/categories/geometria/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-07T00:22:30-03:00</updated>
+  <updated>2017-10-07T00:45:02-03:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>

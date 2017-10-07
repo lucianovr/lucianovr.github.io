@@ -4,7 +4,7 @@
   <title><![CDATA[Category: geometria | Hello World Blog]]></title>
   <link href="http://lucianovr.github.io/blog/categories/geometria/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-07T19:00:34-03:00</updated>
+  <updated>2017-10-07T19:03:01-03:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
     <name><![CDATA[Luciano Ribeiro]]></name>
@@ -18,7 +18,7 @@
     <link href="http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante/"/>
     <updated>2017-10-06T23:34:01-03:00</updated>
     <id>http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante</id>
-    <content type="html"><![CDATA[<p><img src="http://github.com/lucianovr/lucianovr.github.io/tree/master/images/ataque_fulminante_1102.png" alt="alt" /></p>
+    <content type="html"><![CDATA[<p><img src="../images/ataque_fulminante_1102.png" alt="alt" /></p>
 ]]></content>
   </entry>
   

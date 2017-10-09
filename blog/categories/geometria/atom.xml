@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: geometria | Hello World Blog]]></title>
+  <title><![CDATA[Category: Geometria | Hello World Blog]]></title>
   <link href="http://lucianovr.github.io/blog/categories/geometria/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-08T23:31:10-03:00</updated>
+  <updated>2017-10-09T19:52:26-03:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
     <name><![CDATA[Luciano Ribeiro]]></name>
@@ -42,6 +42,28 @@ a = bq + r
 <p><img src="https://lucianovr.github.io/images/ataque_fulminante_1102.png" alt="alt" /></p>
 
 <p>Resumindo o enunciado, o problema dos dá as coordenadas do círculo e seu raio, chamaremos de (Xc,Yc,R), as coordenadas do canhão (X, Y), o seu ângulo de abertura $\theta$ e sua direção [\alpha].</p>
+
+<pre><code class="Java">public class HelloWorld {
+  public static void main(String[] args) {
+      System.out.println("Hello World");
+  }
+}
+</code></pre>
+
+<pre><code class="C++">vector&lt;int&gt; V;
+for (int i = 0; i &lt; V.size(); ++i){
+    V[i]++;
+}
+</code></pre>
+
+<pre><code class="Python">def main():
+    for i in xrange(0,10):
+        print(i)
+if __name__ == '__main__':
+    main()
+else:
+    pass
+</code></pre>
 ]]></content>
   </entry>
   

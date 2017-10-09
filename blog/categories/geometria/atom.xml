@@ -4,7 +4,7 @@
   <title><![CDATA[Category: geometria | Hello World Blog]]></title>
   <link href="http://lucianovr.github.io/blog/categories/geometria/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-07T19:07:04-03:00</updated>
+  <updated>2017-10-08T22:53:47-03:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
     <name><![CDATA[Luciano Ribeiro]]></name>
@@ -14,11 +14,23 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Coming Soon]]></title>
+    <title type="html"><![CDATA[Ataque Fulminante]]></title>
     <link href="http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante/"/>
     <updated>2017-10-06T23:34:01-03:00</updated>
     <id>http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante</id>
-    <content type="html"><![CDATA[<p><img src="https://lucianovr.github.io/images/ataque_fulminante_1102.png" alt="alt" /></p>
+    <content type="html"><![CDATA[<p>$$ x+y+\alpha $$
+\$$ 5 + 5 $$
+$$ 5 + 5 + z$$
+\$\$ 5 + 5 $$
+\$\$ 5 + 5 + \theta$$</p>
+
+<p>Problema <a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1102">Ataque Fulminante</a>.</p>
+
+<p>Bom, de início parece ser um problema difícil, mas irei falar de algumas técnicas de o deixam bastante simples até.</p>
+
+<p><img src="https://lucianovr.github.io/images/ataque_fulminante_1102.png" alt="alt" /></p>
+
+<p>Resumindo o enunciado, o problema dos dá as coordenadas do círculo e seu raio, chamaremos de (Xc,Yc,R), as coordenadas do canhão (X, Y), o seu ângulo de abertura $\theta$ e sua direção [\alpha].</p>
 ]]></content>
   </entry>
   

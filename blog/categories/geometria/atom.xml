@@ -4,7 +4,7 @@
   <title><![CDATA[Category: geometria | Hello World Blog]]></title>
   <link href="http://lucianovr.github.io/blog/categories/geometria/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-08T22:53:47-03:00</updated>
+  <updated>2017-10-08T22:55:22-03:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
     <name><![CDATA[Luciano Ribeiro]]></name>
@@ -18,10 +18,10 @@
     <link href="http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante/"/>
     <updated>2017-10-06T23:34:01-03:00</updated>
     <id>http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante</id>
-    <content type="html"><![CDATA[<p>$$ x+y+\alpha $$
-\$$ 5 + 5 $$
-$$ 5 + 5 + z$$
-\$\$ 5 + 5 $$
+    <content type="html"><![CDATA[<p>$$ x+y+\alpha $$<br/>
+\$$ 5 + 5 $$<br/>
+$$ 5 + 5 + z$$<br/>
+\$\$ 5 + 5 $$<br/>
 \$\$ 5 + 5 + \theta$$</p>
 
 <p>Problema <a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1102">Ataque Fulminante</a>.</p>

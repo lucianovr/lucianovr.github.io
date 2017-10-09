@@ -4,7 +4,7 @@
   <title><![CDATA[Category: geometria | Hello World Blog]]></title>
   <link href="http://lucianovr.github.io/blog/categories/geometria/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-08T22:55:22-03:00</updated>
+  <updated>2017-10-08T23:31:10-03:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
     <name><![CDATA[Luciano Ribeiro]]></name>
@@ -18,11 +18,22 @@
     <link href="http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante/"/>
     <updated>2017-10-06T23:34:01-03:00</updated>
     <id>http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante</id>
-    <content type="html"><![CDATA[<p>$$ x+y+\alpha $$<br/>
-\$$ 5 + 5 $$<br/>
-$$ 5 + 5 + z$$<br/>
-\$\$ 5 + 5 $$<br/>
-\$\$ 5 + 5 + \theta$$</p>
+    <content type="html"><![CDATA[<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+<p>$$
+ f(x)=(x+a)(x+b) + \theta \sum_{i=0}^{n} a_{i}<br/>
+$$</p>
+
+<p>A equacao \(f(x)=(x+a)(x+b) + \theta + \sum_{i=0}^{n} \)  esta ok</p>
+
+<p>\[6<sup>2</sup> - 5 = 36-5 = 31 \]</p>
+
+<p>\begin{equation}
+a = bq + r
+\end{equation}</p>
 
 <p>Problema <a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1102">Ataque Fulminante</a>.</p>
 

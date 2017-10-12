@@ -4,7 +4,7 @@
   <title><![CDATA[Hello World Blog]]></title>
   <link href="http://lucianovr.github.io/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-12T11:52:11-03:00</updated>
+  <updated>2017-10-12T16:20:09-03:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
     <name><![CDATA[Luciano Ribeiro]]></name>
@@ -25,59 +25,20 @@
 
 <p>Como primeiro post, falarei de um problema de geometria. Trata-se do <em>Ataque Fulminante</em>, este que esteve presente na regional de 2009. Apesar de ser um problema antigo, uma quantidade relativamente pequena de usuário o resolveu no portal do URI.</p>
 
-<p>De início parece ser um problema difícil, mas com umas observações e um pequeno conhecimento de trigonometria, ele fica bem simples. Confira ele neste <a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1102">link</a>, pense um bocado na solução e só então <del>depois de perder as esperanças</del> continue com este tutorial :D</p>
-
 <p align="center">
-    <img src="https://lucianovr.github.io/images/ataque_fulminante_1102.png";
+    <img src="https://lucianovr.github.io/images/ataque_fulminante_1102.png";>
 </p>
 
 
-<p>Vamos interpretar as posições dos objetos como vetores no plano 2D.
-Seja \( (\vec{P}, \theta, \alpha) \) a posição do canhão, seu feixe de abertura e sua direção respectivamente e \( (\vec{C}, R \)) a posição da cidade e seu raio.</p>
-
-<p>Uma grande sacada que ajuda e muito a resolver este problema é aplicar translação e rotação nos objetos da entrada a fim de obter uma representação equivalente para todos os casos de testes.</p>
-
-<p>Podemos fazer de várias formas, a que eu acho mais interessante é posicionar o canhão no centro do sistema Cartesiano, e rotacionar a mira do canhão de tal forma que ele aponte para +x (\(\alpha = 0\)).</p>
-
-<p>Para transladar os pontos para o centro é muito simples, basta somar \(&ndash;\vec{P}\) às coordenadas do canhão e da cidade.</p>
-
-<p>Até aqui tudo bem, mas e agora para rotacionar a direção do canhão?
-Bom, o que realmente importa e rotacionar a cidade em relação ao canhão para termos o efeito de que o canhão aponta para +x e que a cidade fique coerente com relação aos dados originais.</p>
-
-<p>Para isto, aplicaremos uma matriz de rotação 2D vista abaixo, que serve para rotacionar um ponto em relação a origem \(\theta \) graus no sentido anti-horário.</p>
-
-<p>$$
-\left [ \begin{matrix} x' \\ y' \end{matrix} \right ] =
-\left [ \begin{matrix} \cos(\theta) &amp; -\sin(\theta) \\  \sin(\theta) &amp; \cos(\theta) \end{matrix} \right ] \left [ \begin{matrix} x \\ y \end{matrix} \right ]
-$$</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='Java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
-</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello World&quot;</span><span class="o">);</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
+<!-- more -->
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='C++'><span class='line'><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">V</span><span class="p">;</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">V</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
-</span><span class='line'>    <span class="n">V</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>De início parece ser um problema difícil, mas com umas observações e um pequeno conhecimento de trigonometria, ele fica bem simples. Confira ele neste <a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1102">link</a>, pense um bocado na solução e só então <del>depois de perder as esperanças</del> continue com este tutorial :D</p>
 
-
-
+<p>Primeiro, vamos interpretar as posições dos objetos como vetores posição no plano 2D.
+Seja \( (\vec{P}, \theta, \alpha) \) o vetor posição do canhão, seu feixe de abertura e sua direção respectivamente e \( (\vec{C}, R \)) o vetor posição da cidade e seu raio, como visto na imagem abaixo.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -86,14 +47,133 @@ $$</p>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='Python'><span class='line'><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
-</span><span class='line'>        <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">main</span><span class="p">()</span>
-</span><span class='line'><span class="k">else</span><span class="p">:</span>
-</span><span class='line'>    <span class="k">pass</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='C++'><span class='line'><span class="k">struct</span> <span class="n">point</span><span class="p">{</span>
+</span><span class='line'>    <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">point</span><span class="p">(</span><span class="kt">double</span> <span class="n">_x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">_y</span><span class="o">=</span><span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>        <span class="n">x</span> <span class="o">=</span> <span class="n">_x</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">y</span> <span class="o">=</span> <span class="n">_y</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="n">point</span> <span class="k">operator</span> <span class="o">-</span> <span class="p">(</span><span class="n">point</span> <span class="n">q</span><span class="p">){</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">point</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">q</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">q</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+</span><span class='line'>    <span class="n">point</span> <span class="n">P</span><span class="p">,</span> <span class="n">C</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">double</span> <span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">theta</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">C</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">C</span><span class="p">.</span><span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="n">R</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">P</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">P</span><span class="p">.</span><span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="n">alpha</span> <span class="o">&gt;&gt;</span> <span class="n">theta</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p align="center">
+    <img src="https://lucianovr.github.io/images/ataque/ataque1.png" style="width:100%">
+</p>
+
+
+<p>Uma grande sacada que ajuda e muito a resolver este problema é aplicar translação e rotação nos objetos a fim de se obter uma representação equivalente para todos os casos de testes.</p>
+
+<p>Podemos fazer de várias formas, a que eu acho mais interessante é posicionar o canhão no centro do sistema Cartesiano, e rotacionar a mira do canhão de tal forma que ele aponte sempre para +x (\(\alpha = 0\)).<br/>
+Para transladar os pontos para o centro é muito simples, basta subtrair \(\vec{P}\) do vetor posição do canhão e da cidade. O resultado é visto abaixo.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='C++'><span class='line'><span class="k">struct</span> <span class="n">point</span><span class="p">{...}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'>    <span class="n">C</span> <span class="o">=</span> <span class="n">C</span> <span class="o">-</span> <span class="n">P</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">P</span> <span class="o">=</span> <span class="n">point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p align="center">
+    <img src="https://lucianovr.github.io/images/ataque/ataque2.png"style="width:100%">
+</p>
+
+
+<p>Até aqui tudo bem, mas e agora para rotacionar a direção do canhão?
+Bom, o que realmente importa e rotacionar a cidade em relação ao canhão para termos o efeito de que o canhão aponta para +x e que a cidade fique coerente com relação aos dados originais.</p>
+
+<p>Para isto, aplicaremos uma matriz de rotação 2D vista abaixo, que serve para rotacionar um ponto em relação a origem \(\beta \) graus no sentido anti-horário.</p>
+
+<p>$$
+\left [ \begin{matrix} x' \\ y' \end{matrix} \right ] =
+\left [ \begin{matrix} \cos(\beta) &amp; -\sin(\beta) \\  \sin(\beta) &amp; \cos(\beta) \end{matrix} \right ] \left [ \begin{matrix} x \\ y \end{matrix} \right ]
+$$</p>
+
+<p>Como queremos rotacionar o canhão no <strong>sentido horário</strong> de \(\alpha\) graus, basta rotacionar o vetor da cidade \(-\alpha\) usando a matriz de rotação.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='C++'><span class='line'><span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="n">acos</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// rotaciona u em t graus no sentido anti-horário</span>
+</span><span class='line'><span class="n">point</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">point</span> <span class="n">p</span><span class="p">,</span> <span class="kt">double</span> <span class="n">t</span><span class="p">){</span>
+</span><span class='line'>    <span class="n">point</span> <span class="n">r</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">;</span> <span class="c1">// converte t para radianos</span>
+</span><span class='line'>    <span class="n">r</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">r</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'>    <span class="n">C</span> <span class="o">=</span> <span class="n">rotate</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="o">-</span><span class="n">alpha</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p align="center">
+    <img src="https://lucianovr.github.io/images/ataque/ataque3.png"style="width:100%">
+</p>
+
+
+<p>Pode parecer pouco, e é, mas ajuda em muito analisar as situações possíveis agora. Por exemplo, é fácil checar se o círculo está completamente fora do alcance do canhão. Vou listar alguns casos possíveis.</p>
+
+<ul>
+<li>O círculo pode estar atrás do canhão, neste caso é só verificar se todos os pontos do circulo estão no semiplano -X. Basta checar se C.x + R &lt;= 0.</li>
+</ul>
 
 ]]></content>
   </entry>

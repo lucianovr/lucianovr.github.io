@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Geometria | Hello World Blog]]></title>
   <link href="http://lucianovr.github.io/blog/categories/geometria/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-12T11:52:11-03:00</updated>
+  <updated>2017-10-12T16:20:09-03:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
     <name><![CDATA[Luciano Ribeiro]]></name>
@@ -25,53 +25,106 @@
 
 <p>Como primeiro post, falarei de um problema de geometria. Trata-se do <em>Ataque Fulminante</em>, este que esteve presente na regional de 2009. Apesar de ser um problema antigo, uma quantidade relativamente pequena de usuário o resolveu no portal do URI.</p>
 
-<p>De início parece ser um problema difícil, mas com umas observações e um pequeno conhecimento de trigonometria, ele fica bem simples. Confira ele neste <a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1102">link</a>, pense um bocado na solução e só então <del>depois de perder as esperanças</del> continue com este tutorial :D</p>
-
 <p align="center">
-    <img src="https://lucianovr.github.io/images/ataque_fulminante_1102.png";
+    <img src="https://lucianovr.github.io/images/ataque_fulminante_1102.png";>
 </p>
 
 
-<p>Vamos interpretar as posições dos objetos como vetores no plano 2D.
-Seja \( (\vec{P}, \theta, \alpha) \) a posição do canhão, seu feixe de abertura e sua direção respectivamente e \( (\vec{C}, R \)) a posição da cidade e seu raio.</p>
 
-<p>Uma grande sacada que ajuda e muito a resolver este problema é aplicar translação e rotação nos objetos da entrada a fim de obter uma representação equivalente para todos os casos de testes.</p>
 
-<p>Podemos fazer de várias formas, a que eu acho mais interessante é posicionar o canhão no centro do sistema Cartesiano, e rotacionar a mira do canhão de tal forma que ele aponte para +x (\(\alpha = 0\)).</p>
+<!-- more -->
 
-<p>Para transladar os pontos para o centro é muito simples, basta somar \(&ndash;\vec{P}\) às coordenadas do canhão e da cidade.</p>
+
+<p>De início parece ser um problema difícil, mas com umas observações e um pequeno conhecimento de trigonometria, ele fica bem simples. Confira ele neste <a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1102">link</a>, pense um bocado na solução e só então <del>depois de perder as esperanças</del> continue com este tutorial :D</p>
+
+<p>Primeiro, vamos interpretar as posições dos objetos como vetores posição no plano 2D.
+Seja \( (\vec{P}, \theta, \alpha) \) o vetor posição do canhão, seu feixe de abertura e sua direção respectivamente e \( (\vec{C}, R \)) o vetor posição da cidade e seu raio, como visto na imagem abaixo.</p>
+
+<pre><code class="C++">struct point{
+    double x, y;
+    point(double _x=0, double _y=0){
+        x = _x;
+        y = _y;
+    }
+    point operator - (point q){
+        return point(x - q.x, y - q.y);
+    }
+}
+
+int main(){
+    point P, C;
+    double R, alpha, theta;
+
+    cin &gt;&gt; C.x &gt;&gt; C.y &gt;&gt; R;
+    cin &gt;&gt; P.x &gt;&gt; P.y &gt;&gt; alpha &gt;&gt; theta;
+}
+</code></pre>
+
+<p align="center">
+    <img src="https://lucianovr.github.io/images/ataque/ataque1.png" style="width:100%">
+</p>
+
+
+<p>Uma grande sacada que ajuda e muito a resolver este problema é aplicar translação e rotação nos objetos a fim de se obter uma representação equivalente para todos os casos de testes.</p>
+
+<p>Podemos fazer de várias formas, a que eu acho mais interessante é posicionar o canhão no centro do sistema Cartesiano, e rotacionar a mira do canhão de tal forma que ele aponte sempre para +x (\(\alpha = 0\)).<br/>
+Para transladar os pontos para o centro é muito simples, basta subtrair \(\vec{P}\) do vetor posição do canhão e da cidade. O resultado é visto abaixo.</p>
+
+<pre><code class="C++">struct point{...}
+
+int main(){
+    ...
+    C = C - P;
+    P = point(0,0);
+}
+</code></pre>
+
+<p align="center">
+    <img src="https://lucianovr.github.io/images/ataque/ataque2.png"style="width:100%">
+</p>
+
 
 <p>Até aqui tudo bem, mas e agora para rotacionar a direção do canhão?
 Bom, o que realmente importa e rotacionar a cidade em relação ao canhão para termos o efeito de que o canhão aponta para +x e que a cidade fique coerente com relação aos dados originais.</p>
 
-<p>Para isto, aplicaremos uma matriz de rotação 2D vista abaixo, que serve para rotacionar um ponto em relação a origem \(\theta \) graus no sentido anti-horário.</p>
+<p>Para isto, aplicaremos uma matriz de rotação 2D vista abaixo, que serve para rotacionar um ponto em relação a origem \(\beta \) graus no sentido anti-horário.</p>
 
 <p>$$
 \left [ \begin{matrix} x' \\ y' \end{matrix} \right ] =
-\left [ \begin{matrix} \cos(\theta) &amp; -\sin(\theta) \\  \sin(\theta) &amp; \cos(\theta) \end{matrix} \right ] \left [ \begin{matrix} x \\ y \end{matrix} \right ]
+\left [ \begin{matrix} \cos(\beta) &amp; -\sin(\beta) \\  \sin(\beta) &amp; \cos(\beta) \end{matrix} \right ] \left [ \begin{matrix} x \\ y \end{matrix} \right ]
 $$</p>
 
-<pre><code class="Java">public class HelloWorld {
-  public static void main(String[] args) {
-      System.out.println("Hello World");
-  }
+<p>Como queremos rotacionar o canhão no <strong>sentido horário</strong> de \(\alpha\) graus, basta rotacionar o vetor da cidade \(-\alpha\) usando a matriz de rotação.</p>
+
+<pre><code class="C++">double pi = acos(-1.0);
+
+// rotaciona u em t graus no sentido anti-horário
+point rotate(point p, double t){
+    point r;
+    t = t * pi / 180.0; // converte t para radianos
+    r.x = p.x * cos(t) - p.y*sin(t);
+    r.y = p.x * sin(t) + p.y*cos(t);
+    return r;
+}
+
+...
+int main(){
+    ...
+    C = rotate(C, -alpha);
 }
 </code></pre>
 
-<pre><code class="C++">vector&lt;int&gt; V;
-for (int i = 0; i &lt; V.size(); ++i){
-    V[i]++;
-}
-</code></pre>
+<p align="center">
+    <img src="https://lucianovr.github.io/images/ataque/ataque3.png"style="width:100%">
+</p>
 
-<pre><code class="Python">def main():
-    for i in xrange(0,10):
-        print(i)
-if __name__ == '__main__':
-    main()
-else:
-    pass
-</code></pre>
+
+<p>Pode parecer pouco, e é, mas ajuda em muito analisar as situações possíveis agora. Por exemplo, é fácil checar se o círculo está completamente fora do alcance do canhão. Vou listar alguns casos possíveis.</p>
+
+<ul>
+<li>O círculo pode estar atrás do canhão, neste caso é só verificar se todos os pontos do circulo estão no semiplano -X. Basta checar se C.x + R &lt;= 0.</li>
+</ul>
+
 ]]></content>
   </entry>
   

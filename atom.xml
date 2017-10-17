@@ -4,7 +4,7 @@
   <title><![CDATA[Hello World Blog]]></title>
   <link href="http://lucianovr.github.io/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-12T16:20:09-03:00</updated>
+  <updated>2017-10-17T19:33:53-02:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
     <name><![CDATA[Luciano Ribeiro]]></name>
@@ -23,7 +23,7 @@
 </script>
 
 
-<p>Como primeiro post, falarei de um problema de geometria. Trata-se do <em>Ataque Fulminante</em>, este que esteve presente na regional de 2009. Apesar de ser um problema antigo, uma quantidade relativamente pequena de usuário o resolveu no portal do URI.</p>
+<p>Como primeiro post, falarei de um problema de geometria. Trata-se do <em>Ataque Fulminante</em>, este que esteve presente na regional de 2009. Apesar de ser um problema antigo, uma quantidade relativamente pequena de usuários o resolveu no portal do URI.</p>
 
 <p align="center">
     <img src="https://lucianovr.github.io/images/ataque_fulminante_1102.png";>
@@ -35,10 +35,12 @@
 <!-- more -->
 
 
+<p>É bem possível que se você já tenha resolvido este problema, possa ter feito de outra maneira da qual irei explicar aqui. Quando resolvi pela primeira vez analisei muitos corners cases e deu bastante trabalho. Recentemente, olhei para ele de novo e tive outra ideia que poderia ter facilitado a minha vida. Isso que irei explicar agora.</p>
+
 <p>De início parece ser um problema difícil, mas com umas observações e um pequeno conhecimento de trigonometria, ele fica bem simples. Confira ele neste <a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/1102">link</a>, pense um bocado na solução e só então <del>depois de perder as esperanças</del> continue com este tutorial :D</p>
 
 <p>Primeiro, vamos interpretar as posições dos objetos como vetores posição no plano 2D.
-Seja \( (\vec{P}, \theta, \alpha) \) o vetor posição do canhão, seu feixe de abertura e sua direção respectivamente e \( (\vec{C}, R \)) o vetor posição da cidade e seu raio, como visto na imagem abaixo.</p>
+Seja  \((\vec{P}, \theta, \alpha)\) o vetor posição do canhão, seu feixe de abertura e sua direção respectivamente e \((\vec{C}, R )\) o vetor posição da cidade e seu raio, como visto na imagem abaixo.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -82,7 +84,7 @@ Seja \( (\vec{P}, \theta, \alpha) \) o vetor posição do canhão, seu feixe de 
 
 
 <p align="center">
-    <img src="https://lucianovr.github.io/images/ataque/ataque1.png" style="width:100%">
+    <img src="https://lucianovr.github.io/images/ataque/ataque1.png" style="width:80%">
 </p>
 
 
@@ -111,21 +113,21 @@ Para transladar os pontos para o centro é muito simples, basta subtrair \(\vec{
 
 
 <p align="center">
-    <img src="https://lucianovr.github.io/images/ataque/ataque2.png"style="width:100%">
+    <img src="https://lucianovr.github.io/images/ataque/ataque2.png"style="width:80%">
 </p>
 
 
 <p>Até aqui tudo bem, mas e agora para rotacionar a direção do canhão?
-Bom, o que realmente importa e rotacionar a cidade em relação ao canhão para termos o efeito de que o canhão aponta para +x e que a cidade fique coerente com relação aos dados originais.</p>
+Quando o canhão estiver apontando para +x, a cidade estará numa posição que é a posição antiga dela rotacionada de \(\alpha\) graus no sentido horário.</p>
 
-<p>Para isto, aplicaremos uma matriz de rotação 2D vista abaixo, que serve para rotacionar um ponto em relação a origem \(\beta \) graus no sentido anti-horário.</p>
+<p>Existe uma matriz que realiza a transformação de rotação de um ponto em relação a origem. Normalmente usamos a notação \(P' = R(\beta) * P\), onde \(P'\) é o ponto rotacionado de \(\beta\) graus no sentido <strong>anti-horário</strong>.</p>
 
 <p>$$
 \left [ \begin{matrix} x' \\ y' \end{matrix} \right ] =
 \left [ \begin{matrix} \cos(\beta) &amp; -\sin(\beta) \\  \sin(\beta) &amp; \cos(\beta) \end{matrix} \right ] \left [ \begin{matrix} x \\ y \end{matrix} \right ]
 $$</p>
 
-<p>Como queremos rotacionar o canhão no <strong>sentido horário</strong> de \(\alpha\) graus, basta rotacionar o vetor da cidade \(-\alpha\) usando a matriz de rotação.</p>
+<p>Como queremos rotacionar o canhão no <strong>sentido horário</strong> de \(\alpha\) graus, basta trocar \(\beta\) por \(-\alpha\).</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -145,12 +147,12 @@ $$</p>
 <span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class='C++'><span class='line'><span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="n">acos</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">);</span>
 </span><span class='line'>
-</span><span class='line'><span class="c1">// rotaciona u em t graus no sentido anti-horário</span>
-</span><span class='line'><span class="n">point</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">point</span> <span class="n">p</span><span class="p">,</span> <span class="kt">double</span> <span class="n">t</span><span class="p">){</span>
+</span><span class='line'><span class="c1">// rotaciona u em b graus no sentido anti-horário</span>
+</span><span class='line'><span class="n">point</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">point</span> <span class="n">p</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">){</span>
 </span><span class='line'>    <span class="n">point</span> <span class="n">r</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">;</span> <span class="c1">// converte t para radianos</span>
-</span><span class='line'>    <span class="n">r</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
-</span><span class='line'>    <span class="n">r</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">;</span> <span class="c1">// converte b para radianos</span>
+</span><span class='line'>    <span class="n">r</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">r</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
 </span><span class='line'>    <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
@@ -165,16 +167,24 @@ $$</p>
 
 
 <p align="center">
-    <img src="https://lucianovr.github.io/images/ataque/ataque3.png"style="width:100%">
+    <img src="https://lucianovr.github.io/images/ataque/ataque3.png"style="width:80%">
 </p>
 
 
-<p>Pode parecer pouco, e é, mas ajuda em muito analisar as situações possíveis agora. Por exemplo, é fácil checar se o círculo está completamente fora do alcance do canhão. Vou listar alguns casos possíveis.</p>
+<p>Neste momento sabemos que o centro do círculo está no 1<sup>o</sup> ou 4<sup>o</sup> quadrante. Se você quiser ir um pouco além, pode garantir que o círculo fique no 1<sup>o</sup> quadrante fazendo:</p>
 
-<ul>
-<li>O círculo pode estar atrás do canhão, neste caso é só verificar se todos os pontos do circulo estão no semiplano -X. Basta checar se C.x + R &lt;= 0.</li>
-</ul>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='C++'><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">C</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">C</span><span class="p">.</span><span class="n">y</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
+
+<p>Pode parecer pouco, e é, mas ajuda em muito analisar as situações possíveis agora.</p>
 ]]></content>
   </entry>
   

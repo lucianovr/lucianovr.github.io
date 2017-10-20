@@ -4,7 +4,7 @@
   <title><![CDATA[Hello World Blog]]></title>
   <link href="http://lucianovr.github.io/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-20T19:40:47-02:00</updated>
+  <updated>2017-10-20T20:42:03-02:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
     <name><![CDATA[Luciano Ribeiro]]></name>
@@ -14,10 +14,13 @@
 
   
   <entry>
+    
     <title type="html"><![CDATA[Ataque Fulminante]]></title>
     <link href="http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante/"/>
+    
     <updated>2017-10-06T23:34:01-03:00</updated>
     <id>http://lucianovr.github.io/blog/2017/10/06/ataque-fulminante</id>
+    
     <content type="html"><![CDATA[<script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
@@ -191,6 +194,7 @@ Mas sem elas, as próximas etapas seriam muito mais difícies. De resto agora, d
 
 <p>Até mais.</p>
 ]]></content>
+    
   </entry>
   
 </feed>

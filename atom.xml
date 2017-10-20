@@ -4,7 +4,7 @@
   <title><![CDATA[Hello World Blog]]></title>
   <link href="http://lucianovr.github.io/atom.xml" rel="self"/>
   <link href="http://lucianovr.github.io/"/>
-  <updated>2017-10-17T19:33:53-02:00</updated>
+  <updated>2017-10-20T19:18:32-02:00</updated>
   <id>http://lucianovr.github.io/</id>
   <author>
     <name><![CDATA[Luciano Ribeiro]]></name>
@@ -72,8 +72,8 @@ Seja  \((\vec{P}, \theta, \alpha)\) o vetor posição do canhão, seu feixe de a
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
-</span><span class='line'>    <span class="n">point</span> <span class="n">P</span><span class="p">,</span> <span class="n">C</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">double</span> <span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">theta</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">point</span> <span class="n">C</span><span class="p">;</span> <span class="kt">double</span> <span class="n">R</span><span class="p">;</span> <span class="c1">// dados da cidade</span>
+</span><span class='line'>    <span class="n">point</span> <span class="n">P</span><span class="p">;</span> <span class="kt">double</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">theta</span><span class="p">;</span> <span class="c1">// dados do canhão</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">C</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">C</span><span class="p">.</span><span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="n">R</span><span class="p">;</span>
 </span><span class='line'>    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">P</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">P</span><span class="p">.</span><span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="n">alpha</span> <span class="o">&gt;&gt;</span> <span class="n">theta</span><span class="p">;</span>
@@ -88,10 +88,11 @@ Seja  \((\vec{P}, \theta, \alpha)\) o vetor posição do canhão, seu feixe de a
 </p>
 
 
-<p>Uma grande sacada que ajuda e muito a resolver este problema é aplicar translação e rotação nos objetos a fim de se obter uma representação equivalente para todos os casos de testes.</p>
+<p>Uma grande sacada que ajuda e muito a resolver este problema é aplicar translação e rotação nos objetos a fim de se obter uma representação única e equivalente para todos os casos de testes.</p>
 
-<p>Podemos fazer de várias formas, a que eu acho mais interessante é posicionar o canhão no centro do sistema Cartesiano, e rotacionar a mira do canhão de tal forma que ele aponte sempre para +x (\(\alpha = 0\)).<br/>
-Para transladar os pontos para o centro é muito simples, basta subtrair \(\vec{P}\) do vetor posição do canhão e da cidade. O resultado é visto abaixo.</p>
+<p>Podemos fazer de várias formas, a que eu acho mais interessante é posicionar o canhão no centro do sistema Cartesiano, e rotacionar a mira do canhão de tal forma que ele aponte para +x (\(\alpha = 0\)).<br/>
+Para transladar os pontos para o centro é muito simples, basta subtrair \(\vec{P}\) do vetor posição do canhão e da cidade. A subtração de vetores é feita pela própria <strong>struct point</strong>, com o <em>overloading</em> do operator <strong>-</strong>.
+O resultado é visto abaixo.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -104,7 +105,7 @@ Para transladar os pontos para o centro é muito simples, basta subtrair \(\vec{
 </span><span class='line'>
 </span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
 </span><span class='line'>    <span class="p">...</span>
-</span><span class='line'>    <span class="n">C</span> <span class="o">=</span> <span class="n">C</span> <span class="o">-</span> <span class="n">P</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">C</span> <span class="o">=</span> <span class="n">C</span> <span class="o">-</span> <span class="n">P</span><span class="p">;</span> <span class="c1">// a struct point sabe o que fazer com o operador -</span>
 </span><span class='line'>    <span class="n">P</span> <span class="o">=</span> <span class="n">point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -118,9 +119,10 @@ Para transladar os pontos para o centro é muito simples, basta subtrair \(\vec{
 
 
 <p>Até aqui tudo bem, mas e agora para rotacionar a direção do canhão?
-Quando o canhão estiver apontando para +x, a cidade estará numa posição que é a posição antiga dela rotacionada de \(\alpha\) graus no sentido horário.</p>
+Quando o canhão estiver apontando para +x, a cidade estará numa posição que é a posição antiga dela rotacionada de \(\alpha\) graus no sentido horário. Se tivesse mais pontos no plano, bastaria rotacionar todos eles com o mesmo ângulo.</p>
 
-<p>Existe uma matriz que realiza a transformação de rotação de um ponto em relação a origem. Normalmente usamos a notação \(P' = R(\beta) * P\), onde \(P'\) é o ponto rotacionado de \(\beta\) graus no sentido <strong>anti-horário</strong>.</p>
+<p>Existe uma matriz que realiza a transformação de rotação de um ponto em relação a origem. Normalmente usamos a notação \(P' = R(\beta) * P\), onde \(P'\) é o ponto rotacionado de \(\beta\) graus no sentido <strong>anti-horário</strong>.
+Como essa matriz rotaciona pontos em relação a oriem, foi por isso que trouxemos o canhão para a origem do sistema cartesiano.</p>
 
 <p>$$
 \left [ \begin{matrix} x' \\ y' \end{matrix} \right ] =
@@ -145,12 +147,12 @@ $$</p>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='C++'><span class='line'><span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="n">acos</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">);</span>
+</pre></td><td class='code'><pre><code class='C++'><span class='line'><span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="n">acos</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">);</span> <span class="c1">// valor de PI</span>
 </span><span class='line'>
-</span><span class='line'><span class="c1">// rotaciona u em b graus no sentido anti-horário</span>
+</span><span class='line'><span class="c1">// rotaciona p em b graus no sentido anti-horário</span>
 </span><span class='line'><span class="n">point</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">point</span> <span class="n">p</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">){</span>
 </span><span class='line'>    <span class="n">point</span> <span class="n">r</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">;</span> <span class="c1">// converte b para radianos</span>
+</span><span class='line'>    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span><span class="p">;</span> <span class="c1">// converte b para radianos</span>
 </span><span class='line'>    <span class="n">r</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
 </span><span class='line'>    <span class="n">r</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
 </span><span class='line'>    <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
@@ -184,7 +186,10 @@ $$</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Pode parecer pouco, e é, mas ajuda em muito analisar as situações possíveis agora.</p>
+<p>Até aqui esta foi a parte mais fácil. Fizemos apenas duas operações simples sobre os dados da entrada.
+Mas sem elas, as próximas etapas seriam muito mais difícies. De resto agora, dou como dica calcular o ângulo da reta que sai da origem e passa pelo centro do círculo faz com +X. Saber as distâncias do centro do círculo para as duas semi-retas que definem o feixe do canhão.</p>
+
+<p>Até mais.</p>
 ]]></content>
   </entry>
   

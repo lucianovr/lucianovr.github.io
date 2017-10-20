@@ -163,8 +163,6 @@
     <li class="loading">Status updating...</li>
   </ul>
   
-  <a href="https://github.com/lucianovr">@lucianovr</a> on GitHub
-  
   <script type="text/javascript">
     $.domReady(function(){
         if (!window.jXHR){
@@ -178,7 +176,7 @@
         github.showRepos({
             user: 'lucianovr',
             count: 0,
-            skip_forks: true,
+            skip_forks: false,
             target: '#gh_repos'
         });
     });
